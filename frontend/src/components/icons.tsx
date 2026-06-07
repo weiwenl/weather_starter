@@ -70,6 +70,14 @@ export function RefreshIcon({ className = 'h-4 w-4' }: IconProps) {
   );
 }
 
+export function ExpandIcon({ className = 'h-4 w-4' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M8 3H4a1 1 0 0 0-1 1v4M3 4l6 6M16 3h4a1 1 0 0 1 1 1v4M21 4l-6 6M8 21H4a1 1 0 0 1-1-1v-4M3 20l6-6M16 21h4a1 1 0 0 0 1-1v-4M21 20l-6-6" />
+    </svg>
+  );
+}
+
 export function MoonIcon({ className = 'h-12 w-12' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor">
