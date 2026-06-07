@@ -181,10 +181,65 @@ export class SingaporeWeatherClient {
   ) {}
 
   async getCurrentWeather(latitude: number, longitude: number): Promise<WeatherSnapshot> {
+    // Fetch the 2-hour forecast first — it provides condition, area, and valid_period_text.
+    // All other endpoints are fetched in parallel and merged in. Any individual failure
+    // is tolerated: the snapshot gets null for that field rather than the whole call failing.
     const forecastPayload = await this.fetchLatestForecastPayload().catch(() => null);
-    return forecastPayload
+    const base = forecastPayload
       ? this.snapshotFromPayload(forecastPayload, latitude, longitude)
       : this.emptyForecastSnapshot();
+
+    const [temperature, humidity, rainfall, windSpeed, windDirection, uv, airQuality, forecast24h, forecast4d] =
+      await Promise.allSettled([
+        this.fetchNearestReading('air-temperature', latitude, longitude),
+        this.fetchNearestReading('relative-humidity', latitude, longitude),
+        this.fetchNearestReading('rainfall', latitude, longitude),
+        this.fetchNearestReading('wind-speed', latitude, longitude),
+        this.fetchNearestReading('wind-direction', latitude, longitude),
+        this.fetchUvIndex(),
+        this.fetchAirQuality(latitude, longitude),
+        this.fetchTwentyFourHourForecast(latitude, longitude),
+        this.fetchFourDayForecast(),
+      ]);
+
+    const val = <T>(result: PromiseSettledResult<T>): T | null =>
+      result.status === 'fulfilled' ? result.value : null;
+
+    const temperatureResult = val(temperature);
+    const humidityResult = val(humidity);
+    const rainfallResult = val(rainfall);
+    const windSpeedResult = val(windSpeed);
+    const windDirectionResult = val(windDirection);
+    const uvResult = val(uv);
+    const aqResult = val(airQuality);
+    const forecast24hResult = val(forecast24h);
+    const forecast4dResult = val(forecast4d);
+
+    // Use the most recent observed_at across all data sources
+    const timestamps = [
+      base.observed_at,
+      temperatureResult?.timestamp ?? null,
+      humidityResult?.timestamp ?? null,
+    ].filter((t): t is string => Boolean(t));
+    const observed_at = latestTimestamp(timestamps) ?? base.observed_at;
+
+    return {
+      ...base,
+      observed_at,
+      temperature_c: temperatureResult?.value ?? null,
+      humidity_percent: humidityResult?.value ?? null,
+      rainfall_mm: rainfallResult?.value ?? null,
+      wind_speed_knots: windSpeedResult?.value ?? null,
+      wind_direction_degrees: windDirectionResult?.value ?? null,
+      uv_index: uvResult?.value ?? null,
+      psi_twenty_four_hourly: aqResult?.psi ?? null,
+      pm25_one_hourly: aqResult?.pm25 ?? null,
+      air_quality_region: aqResult?.region ?? null,
+      forecast_low_c: forecast24hResult?.low ?? null,
+      forecast_high_c: forecast24hResult?.high ?? null,
+      forecast_periods: forecast24hResult?.periods ?? [],
+      daily_forecast: forecast4dResult?.days ?? [],
+    };
   }
 
   async fetchLatestForecastPayload(): Promise<ForecastPayload> {
