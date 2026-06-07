@@ -227,7 +227,7 @@ export function HumidityTile({ weather }: WeatherProps) {
 
 export function AveragesTile({ weather }: WeatherProps) {
   return (
-    <TileShell icon={<TrendIcon />} title="Forecast High">
+    <TileShell icon={<TrendIcon />} title="Forecast High" className="col-span-1">
       <div className="text-4xl font-light leading-none tabular-nums text-white/95">
         {formatTemperature(weather?.forecast_high_c)}&deg;
       </div>
@@ -247,10 +247,13 @@ export function AveragesTile({ weather }: WeatherProps) {
 export function TileGrid({ weather }: WeatherProps) {
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      {/* Row 1: Condition (2-col) | Air Quality (2-col) */}
       <AirQualityTile weather={weather} />
+      {/* Row 2: Wind (2-col) | UV Index (1-col) | Temperature (1-col) */}
       <WindTile weather={weather} />
       <UVTile weather={weather} />
       <TemperatureTile weather={weather} />
+      {/* Row 3: Rainfall (1-col) | Humidity (1-col) | Forecast High (2-col) */}
       <PrecipitationTile weather={weather} />
       <HumidityTile weather={weather} />
       <AveragesTile weather={weather} />
