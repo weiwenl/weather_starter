@@ -94,6 +94,88 @@ body,
   --theme-map-control-text: rgba(15, 23, 42, 0.7);
 }
 
+:root[data-theme='clear'] {
+  --theme-font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  --theme-background:
+    radial-gradient(110% 80% at 70% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 55%),
+    radial-gradient(90% 70% at 10% 100%, rgba(252, 244, 174, 0.6) 0%, transparent 60%),
+    linear-gradient(170deg, #e6f7ff 0%, #dff6e6 35%, #d7f0e8 65%, #eaf6ff 100%);
+  --theme-text: #0f172a;
+  --theme-text-95: rgba(15, 23, 42, 0.95);
+  --theme-text-90: rgba(15, 23, 42, 0.9);
+  --theme-text-85: rgba(15, 23, 42, 0.85);
+  --theme-text-80: rgba(15, 23, 42, 0.8);
+  --theme-text-75: rgba(15, 23, 42, 0.75);
+  --theme-text-70: rgba(15, 23, 42, 0.7);
+  --theme-text-65: rgba(15, 23, 42, 0.65);
+  --theme-text-60: rgba(15, 23, 42, 0.6);
+  --theme-text-55: rgba(15, 23, 42, 0.55);
+  --theme-text-50: rgba(15, 23, 42, 0.5);
+  --theme-text-40: rgba(15, 23, 42, 0.4);
+  --theme-surface-04: rgba(255, 255, 255, 0.9);
+  --theme-surface-06: rgba(255, 255, 255, 0.95);
+  --theme-surface-07: rgba(255, 255, 255, 0.98);
+  --theme-surface-08: rgba(255, 255, 255, 1);
+  --theme-surface-10: rgba(255, 255, 255, 1);
+  --theme-surface-12: rgba(255, 255, 255, 1);
+  --theme-surface-14: rgba(255, 255, 255, 1);
+  --theme-surface-15: rgba(255, 255, 255, 1);
+  --theme-surface-20: rgba(255, 255, 255, 1);
+  --theme-border-05: rgba(15, 23, 42, 0.06);
+  --theme-border-10: rgba(15, 23, 42, 0.08);
+  --theme-border-15: rgba(15, 23, 42, 0.10);
+  --theme-border-20: rgba(15, 23, 42, 0.12);
+  --theme-border-30: rgba(15, 23, 42, 0.16);
+  --theme-border-40: rgba(15, 23, 42, 0.22);
+  --theme-border-50: rgba(15, 23, 42, 0.3);
+  --theme-border-55: rgba(15, 23, 42, 0.36);
+  --theme-sidebar: rgba(255, 255, 255, 0.6);
+  --theme-overlay: rgba(15, 23, 42, 0.06);
+  --theme-fullscreen: #ffffff;
+  --theme-primary-action: #111827;
+  --theme-primary-action-hover: #0b1220;
+  --theme-primary-action-text: #ffffff;
+  --theme-chip-text: #334155;
+  --theme-focus-ring: rgba(59, 130, 246, 0.3);
+  --theme-focus-ring-strong: rgba(59, 130, 246, 0.45);
+  --theme-shadow-15: rgba(2, 6, 23, 0.06);
+  --theme-shadow-20: rgba(2, 6, 23, 0.08);
+  --theme-shadow-40: rgba(2, 6, 23, 0.12);
+  --theme-floating-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+  --theme-radius-sm: 0.375rem;
+  --theme-radius-md: 0.5rem;
+  --theme-radius-lg: 0.75rem;
+  --theme-radius-xl: 1rem;
+  --theme-blur-xl: 18px;
+  --theme-blur-2xl: 32px;
+  --theme-sun: #fcd34d;
+  --theme-positive: #10b981;
+  --theme-positive-glow: rgba(16, 185, 129, 0.18);
+  --theme-danger-bg: rgba(239, 68, 68, 0.06);
+  --theme-danger-border: rgba(239, 68, 68, 0.08);
+  --theme-danger-text: #7f1d1d;
+  --theme-temp-from: rgba(125, 211, 252, 0.9);
+  --theme-temp-via: rgba(252, 211, 77, 0.8);
+  --theme-temp-to: rgba(253, 186, 116, 0.9);
+  --theme-aqi-gradient: linear-gradient(90deg, #34d399, #fde047, #fb923c, #ef4444);
+  --theme-uvi-gradient: linear-gradient(90deg, #34d399, #fde047, #fb923c, #d946ef);
+  --theme-option-bg: #ffffff;
+  --theme-option-text: #0f172a;
+  --theme-map-bg: #cfeef6;
+  --theme-map-filter: saturate(1.04) contrast(0.98);
+  --theme-map-pin: #d6d8dc;
+  --theme-map-pin-dot: #5f646d;
+  --theme-map-pin-selected: #0f172a;
+  --theme-map-pin-selected-dot: #ffffff;
+  --theme-map-label-bg: rgba(255, 255, 255, 0.95);
+  --theme-map-label-text: #0f172a;
+  --theme-map-label-subtext: rgba(15, 23, 42, 0.72);
+  --theme-map-label-selected-bg: rgba(58, 58, 58, 0.94);
+  --theme-map-label-selected-subtext: rgba(255, 255, 255, 0.76);
+  --theme-map-control-text: rgba(15, 23, 42, 0.7);
+}
+
 :root[data-theme='storm'] {
   --theme-font-family: 'Aptos Narrow', 'Segoe UI', Arial, sans-serif;
   --theme-background:

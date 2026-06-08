@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ProviderProps } from '../types';
 
 export const visualThemes = [
+  { id: 'clear', label: 'Clear Morning' },
   { id: 'apple', label: 'Apple' },
   { id: 'storm', label: 'Storm' },
   { id: 'coastal', label: 'Coastal' },
@@ -15,7 +16,7 @@ interface ThemeValue {
   setThemeId: (themeId: VisualThemeId) => void;
 }
 
-const DEFAULT_THEME: VisualThemeId = 'apple';
+const DEFAULT_THEME: VisualThemeId = 'clear';
 const STORAGE_KEY = 'weather-starter-theme';
 const themeIds = new Set<VisualThemeId>(visualThemes.map((theme) => theme.id));
 
