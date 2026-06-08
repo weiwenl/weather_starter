@@ -7,7 +7,9 @@ export const visualThemes = [
   { id: 'storm', label: 'Storm' },
   { id: 'coastal', label: 'Coastal' },
   { id: 'alpine', label: 'Alpine Air' },
+  { id: 'sunset', label: 'Sunset Gradient' },
   { id: 'solar', label: 'Solar' },
+  { id: 'metro', label: 'Metro Forecast' },
 ] as const;
 
 export type VisualThemeId = (typeof visualThemes)[number]['id'];
