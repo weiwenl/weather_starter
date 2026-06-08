@@ -91,7 +91,7 @@ export function AirQualityTile({ weather }: WeatherProps) {
       <ScaleBar
         value={weather?.psi_twenty_four_hourly}
         max={300}
-        gradientClass="bg-gradient-to-r from-emerald-400 via-yellow-300 via-orange-400 to-red-500"
+        gradientClass="theme-aqi-gradient"
       />
       <p className="mt-3 text-xs leading-snug text-white/70">
         PM2.5 {pm25} ug/m3 · {weather?.air_quality_region ?? 'nearest'} region
@@ -182,7 +182,7 @@ export function UVTile({ weather }: WeatherProps) {
       <ScaleBar
         value={weather?.uv_index}
         max={11}
-        gradientClass="bg-gradient-to-r from-emerald-400 via-yellow-300 via-orange-400 to-fuchsia-500"
+        gradientClass="theme-uvi-gradient"
       />
       <p className="mt-3 text-xs leading-snug text-white/70">Latest nationwide UVI reading.</p>
     </TileShell>
