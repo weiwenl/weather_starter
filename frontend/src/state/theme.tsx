@@ -6,6 +6,7 @@ export const visualThemes = [
   { id: 'apple', label: 'Apple' },
   { id: 'storm', label: 'Storm' },
   { id: 'coastal', label: 'Coastal' },
+  { id: 'alpine', label: 'Alpine Air' },
   { id: 'solar', label: 'Solar' },
 ] as const;
 
